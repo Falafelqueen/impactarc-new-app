@@ -1,0 +1,6 @@
+<% if chatroom.users.any? { |user| user != current_user} %>
+  <div data-inbox-target="inbox">
+    <%= link_to content_tag("h2", chatroom.users.find { |user| user != current_user }.email), chatroom_path(chatroom) %>
+      <%= render 'last_message', chatroom: chatroom %>
+    </div>
+<% end %>

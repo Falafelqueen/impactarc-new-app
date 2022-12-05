@@ -1,0 +1,10 @@
+<div data-controller="inbox" data-inbox-userid-value=<%= current_user.id%>>
+  <% @chatrooms.each do |chatroom| %>
+      <%= render 'chat_preview', chatroom: chatroom %>
+  <% end %>
+</div>
+
+<%= simple_form_for @chatroom, url: chatrooms_path do |f| %>
+  <%= select_tag :user_id, options_from_collection_for_select(User.all, "id", "email") %>
+  <%= f.submit "Start chat" %>
+<% end %>
